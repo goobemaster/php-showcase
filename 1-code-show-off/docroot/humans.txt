@@ -1,0 +1,18 @@
+# humanstxt.org/
+# The humans responsible & technology colophon
+
+# TEAM
+
+    Gabor Major -- Programmer -- https://twitter.com/goobemaster
+
+# THANKS
+
+    Chitratech
+    html5boilerplate.com
+    spcask (Susam)
+    Min Kruger
+
+# TECHNOLOGY COLOPHON
+
+    CSS3, HTML5, JavaScript (ECMA-2015)
+    Apache Server Configs

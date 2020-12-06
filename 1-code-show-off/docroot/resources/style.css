@@ -1,0 +1,147 @@
+/** https://coolors.co/283044-78a1bb-ebf5ee-bfa89e-8b786d */
+
+body {
+    background-color: rgb(40, 48, 68);
+}
+
+a {
+    color: #ebf5ee;
+    text-decoration: none;
+}
+
+a:hover, a:focus, a:active {
+    color: white;
+    text-decoration: underline;
+}
+
+a:visited {
+    color: black;
+}
+
+pre {
+    margin: 0;
+    padding: 0;
+    color: rgb(40, 48, 68);
+}
+
+h3 {
+    margin-top: 0;
+}
+
+.error {
+    color: red;
+    font-weight: bold;
+}
+
+.container {
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.container > .col {
+    flex-basis: 0;
+    flex-grow: 1;
+    max-width: 100%;
+    position: relative;
+}
+
+footer {
+    padding-top: .75rem;
+    padding-bottom: .75rem;
+}
+
+.center {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+header {
+    min-height: 80px;
+    max-height: 100px;
+}
+
+header .col {
+    padding: 15px;
+}
+
+header img {
+    max-height: 64px;
+    float: left;
+    margin-right: 1em;
+}
+
+header h1 {
+    margin: 0;
+    padding-block-start: inherit;
+    color: white;
+}
+
+footer {
+    background-color: rgb(120, 161, 187);
+    color: rgb(40, 48, 68);
+    border-top: 4px solid rgb(40, 48, 68);
+}
+
+nav.col {
+    background-color: rgb(120, 161, 187);
+    flex: 0 0 33.333333%;
+    max-width: 33.333333% !important;
+    width: 100%;
+    padding: 0.75rem;
+    border-right: 4px solid rgb(40, 48, 68);
+}
+
+nav > ul {
+    display: block;
+    padding: 0;
+    margin: 0;
+    list-style-position: inside;
+    list-style-type: none;
+}
+
+nav > ul > li {
+    margin-left: 0.75rem;
+}
+
+nav > ul > li:nth-child(1) > h2 {
+    margin-top: 0;
+}
+
+nav > ul > li > ul {
+    margin-left: 2rem;
+}
+
+nav h2 {
+    color: rgb(40, 48, 68);
+}
+
+main.col {
+    background-color: rgb(235, 245, 238);
+    flex: 0 0 66.666667%;
+    max-width: 66.666667% !important;
+    width: 100%;
+    padding: 0.75rem;
+}
+
+@media only screen and (max-width: 1024px) {
+    nav.col {
+        max-height: 300px;
+        overflow-y: auto;
+        border-bottom: 4px solid rgb(40, 48, 68);
+    }
+
+    main.col, nav.col {
+        min-width: 100% !important;
+        padding: 0;
+    }
+
+    nav.col > ul, main.col pre {
+        margin: 0.75rem;
+    }
+}
