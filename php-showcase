@@ -5,6 +5,7 @@
 echo "*** \033[46mhttps://github.com/goobemaster/php-showcase\033[0m ***\n\n";
 echo "Please choose a solution:\n";
 echo " \033[1;33m1)\033[0m Code Show Off\n";
+echo " \033[1;33m2)\033[0m Search The News\n";
 
 $stdin = fopen('php://stdin', 'r');
 echo "\nYour \033[1;33mchoice\033[0m (or 'q' to exit): ";

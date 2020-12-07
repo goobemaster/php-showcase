@@ -1,0 +1,16 @@
+# humanstxt.org/
+# The humans responsible & technology colophon
+
+# TEAM
+
+    Gabor Major -- Programmer -- https://twitter.com/goobemaster
+
+# THANKS
+
+    html5boilerplate.com
+    Richard Heyes (http://www.phpguru.org/)
+
+# TECHNOLOGY COLOPHON
+
+    CSS3, HTML5, JavaScript (ECMA-2015)
+    Apache Server Configs

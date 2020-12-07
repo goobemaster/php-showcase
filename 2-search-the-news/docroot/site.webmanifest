@@ -1,0 +1,12 @@
+{
+  "short_name": "Search the News",
+  "name": "PHP Showcase / Search the News",
+  "icons": [{
+    "src": "favicon.png",
+    "type": "image/png",
+    "sizes": "192x192"
+  }],
+  "start_url": "/index.php",
+  "background_color": "#fafafa",
+  "theme_color": "#fafafa"
+}
