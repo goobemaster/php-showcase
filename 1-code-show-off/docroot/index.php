@@ -7,9 +7,11 @@
         'rb' => 'Ruby'
     ];
 
-    $fetchFileName = '../content/' . $_GET['fetch'];
+    $contentDir = realpath('../content');
+    $fetchFileName = realpath($contentDir . '/' . $_GET['fetch']);
     if (isset($_GET['fetch'])) {
         if (!array_key_exists(pathinfo($fetchFileName, PATHINFO_EXTENSION), ALLOWED_CONTENT) ||
+            substr($fetchFileName, 0, strlen($contentDir)) !== $contentDir ||
             !file_exists($fetchFileName)) {
             echo '<pre class="error">Sorry, the file you\'ve been looking for does not exist!</pre>';
             exit(0);
