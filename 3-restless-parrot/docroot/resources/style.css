@@ -1,0 +1,267 @@
+/** https://coolors.co/40e0d0-000000-fffacd-91818a-b2a3b5 */
+
+body {
+    background-color: #f7f7f7;
+    font-family: "Trebuchet MS", Helvetica, sans-serif;
+    padding-bottom: 190px; /** 166px */
+    background-color: turquoise; /** #CCFFFF; */
+}
+
+h1, h2 {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+h2 {
+    background-color: white;
+    padding: 4px;
+    border-bottom: 4px solid black;
+}
+
+h2 span {
+    color: #91818A;
+}
+
+a {
+    color: #302f4d;
+    text-decoration: none;
+    font-weight: bold;
+    text-shadow: 1px 1px 5px white;
+}
+
+a:hover, a:focus, a:active {
+    color: #120d31;
+    text-decoration: underline;
+}
+
+a:visited {
+    color: #302f4d;
+}
+
+form label {
+    display: block;
+    margin-bottom: 6px;
+}
+
+input, select, textarea {
+    margin-bottom: 12px;
+}
+
+input, textarea {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    width: 100%;
+}
+
+table {
+    width: 100%;
+    position: relative;
+}
+
+table * {
+    position: relative;
+}
+
+table tr > th:nth-child(1),
+table tr > td:nth-child(1) {
+    text-align: left;
+}
+
+table th, table td {
+    width: 50%;
+    padding: 4px;
+}
+
+table th {
+    border-bottom: 2px solid black;
+}
+
+table input {
+    margin: 0;
+}
+
+table button {
+    width: 100%;
+}
+
+pre {
+    word-wrap: break-word;
+}
+
+.container {
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.container > .col {
+    flex-basis: 0;
+    flex-grow: 1;
+    max-width: 100%;
+    position: relative;
+    padding-left: 16px;
+}
+
+.center {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.right {
+    text-align: right;
+    margin-right: auto;
+}
+
+header {
+    background-color: black;
+    margin-top: 18px;
+    color: white;
+    padding: 8px;
+}
+
+header span {
+    color: lemonchiffon;
+}
+
+main nav.col {
+    max-width: 370px !important;
+    overflow-x: hidden;
+}
+
+main nav, main form {
+    overflow-y: auto;
+}
+
+main nav button {
+    position: absolute;
+    right: 4px;
+    width: 28px;
+    height: 28px;
+    padding: 0;
+}
+
+main nav button span {
+    display: inline-block;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+}
+
+/* main nav button span i {
+    position: absolute;
+    top: -5px;
+    left: -5px;
+    display: contents;
+} */
+
+main nav ul li {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+main form section {
+    padding-right: 16px;
+}
+
+main form#resource section.container > button {
+    margin-top: 32px;
+}
+
+main form#resource section.container button:nth-child(1) {
+    margin-right: 16px;
+}
+
+footer {
+    color: black;
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 150px;
+    background-color: turquoise;
+    border-top: 8px solid turquoise;
+    padding-top: 8px;
+}
+
+footer img {
+    height: 100%;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    background-color: turquoise;
+    z-index: 1;
+}
+
+footer section {
+    position: absolute !important;
+    background-color: black;
+    color: white;
+    width: 100%;
+    bottom: 22px;
+    height: 52px;
+    z-index: 0;
+}
+
+footer section .container {
+    max-width: 80%;
+    margin-left: 10px;
+}
+
+footer .col {
+    padding-left: 0 !important;
+}
+
+footer a {
+    color: lemonchiffon !important;
+    text-shadow: 1px 1px 5px white;
+}
+
+footer a:hover, footer a:focus, footer a:active {
+    text-shadow: 1px 1px 5px lemonchiffon;
+}
+
+footer a:visited {
+    color:  turquoise;
+}
+
+footer > small {
+    max-width: 70%;
+    display: block;
+    padding-left: 15px;
+}
+
+@media only screen and (max-width: 945px) {
+    header h1 {
+        font-size: 1.2em;
+    }
+
+    footer section .container {
+        max-width: 65%;
+    }
+
+    footer section .col {
+        flex-basis: content !important;
+        height: auto;
+        overflow-y: auto;
+    }
+
+    footer p {
+        margin-bottom: 0;
+        margin-top: 4px;
+    }
+
+    footer > small {
+        max-width: 50%;
+        display: block;
+        padding-left: 15px;
+        font-size: x-small;
+    }
+}

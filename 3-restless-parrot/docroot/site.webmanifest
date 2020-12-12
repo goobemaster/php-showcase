@@ -1,0 +1,12 @@
+{
+  "short_name": "Restless Parrot",
+  "name": "PHP Showcase / Restless Parrot",
+  "icons": [{
+    "src": "favicon.png",
+    "type": "image/png",
+    "sizes": "192x192"
+  }],
+  "start_url": "/index.php",
+  "background_color": "#fafafa",
+  "theme_color": "#fafafa"
+}

@@ -24,7 +24,7 @@ searchBox.addEventListener('keyup', event => {
     fetch(fetchUrl, options).then((resp) => resp.text()).then(function(content) {
         const results = JSON.parse(content);
         if (Object.keys(results).length === 0) {
-            main.style.display === 'none';
+            main.style.display = 'none';
             return;
         }
 
@@ -40,6 +40,6 @@ searchBox.addEventListener('keyup', event => {
             index++;
         }
         main.querySelector('.col').innerHTML = topResultsContent;
-        main.style.display === 'block';
+        main.style.display = 'block';
     });
 });
