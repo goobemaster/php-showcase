@@ -41,7 +41,7 @@ More solutions to come, depending on ideas/free time. Suggestions are welcome. I
       <th><a href="#2-search-the-news">2) "Search The News"</a></th>                  
     </tr>
     <tr>
-      <td colspan="2" style="text-align: center;"><a href="#3-restless-parrot"><img src="images/thumb-3.jpg" alt="Code Show Off Preview"></a></td>                  
+      <td colspan="2" style="text-align: center;"><a href="#3-restless-parrot"><img src="images/thumb-3.jpg" alt="Code Show Off Preview" style="margin-left: auto; margin-right: auto;"></a></td>                  
     </tr>
     <tr>
       <th colspan="2"><a href="#3-restless-parrot">3) "Restless Parrot"</a></th>                

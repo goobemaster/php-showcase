@@ -5,6 +5,9 @@
 const BACKGROUND_PROCESS = [
     '3' => 'MockServer.php'
 ];
+const ARCHIVES = [
+    '1' => ['/../content/bubble.c' => '/../content/sample.tar.gz']
+];
 
 echo "*** \033[46mhttps://github.com/goobemaster/php-showcase\033[0m ***\n\n";
 echo "Please choose a solution:\n";
@@ -21,6 +24,16 @@ $folder = glob($index . '-*', GLOB_ONLYDIR)[0] . '/docroot';
 if (!is_dir($folder)) {
     echo "\n\033[0;31mCannot find solution with such index, or directory missing.\033[0m";
     exit(1);
+}
+
+if (array_key_exists($index, ARCHIVES)) {
+    foreach (ARCHIVES[$index] as $check => $archive) {
+        if (!is_file($folder . $check)) {
+            $archiveFile = $folder . $archive;
+            $archivePath = dirname($archiveFile);
+            exec("tar -xvzf {$archiveFile} -C {$archivePath}");
+        }
+    }
 }
 
 if (array_key_exists($index, BACKGROUND_PROCESS)) {
