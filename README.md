@@ -8,6 +8,7 @@ KISS solutions to blatantly easy tasks with the right ratio of server and client
   - [Code Show Off](#1-code-show-off)
   - [Search The News](#2-search-the-news)
   - [Restless Parrot](#3-restless-parrot)
+  - [Wine Setup 3.1](#4-wine-setup-31)  
 
 ## How to run a solution
 
@@ -33,18 +34,20 @@ More solutions to come, depending on ideas/free time. Suggestions are welcome. I
 <table>
   <tbody>
     <tr>
-      <td><a href="#1-code-show-off"><img src="images/thumb-1.jpg" alt="Code Show Off"></a></td>
-      <td><a href="#2-search-the-news"><img src="images/thumb-2.jpg" alt="Search The News"></a></td>                  
+      <td style="width: 50%; text-align: center;"><a href="#1-code-show-off"><img src="images/thumb-1.jpg" alt="Code Show Off"></a></td>
+      <td style="width: 50%; text-align: center;"><a href="#2-search-the-news"><img src="images/thumb-2.jpg" alt="Search The News"></a></td>                  
     </tr>
     <tr>
-      <th><a href="#1-code-show-off">1) "Code Show Off"</a></th>
-      <th><a href="#2-search-the-news">2) "Search The News"</a></th>                  
+      <th style="width: 50%; text-align: center;"><a href="#1-code-show-off">1) "Code Show Off"</a></th>
+      <th style="width: 50%; text-align: center;"><a href="#2-search-the-news">2) "Search The News"</a></th>                  
     </tr>
     <tr>
-      <td colspan="2" style="text-align: center;"><a href="#3-restless-parrot"><img src="images/thumb-3.jpg" alt="Code Show Off Preview" style="margin-left: auto; margin-right: auto;"></a></td>                  
+      <td style="width: 50%; text-align: center;"><a href="#3-restless-parrot"><img src="images/thumb-3.jpg" alt="Restless Parrot Preview"></a></td>
+      <td style="width: 50%; text-align: center;"><a href="#4-wine-setup-31"><img src="images/thumb-4.jpg" alt="Wine Setup 3.1 Preview"></a></td>
     </tr>
     <tr>
-      <th colspan="2"><a href="#3-restless-parrot">3) "Restless Parrot"</a></th>                
+      <th style="width: 50%; text-align: center;"><a href="#3-restless-parrot">3) "Restless Parrot"</a></th>
+      <th style="width: 50%; text-align: center;"><a href="#4-wine-setup-31">4) "Wine Setup 3.1"</a></th>      
     </tr>            
   </tbody>
 </table>
@@ -181,5 +184,41 @@ const PURGE_OLDER_THAN_SEC = 86400; // 1 day
 **ℹ**  *You get the fastest reponses when you send the registered request verbatim. If the request method, path, body matches, and all the registered headers are present the mock server will still respond!*
 
 **ℹ** *If the mock server cannot start with ./php-showcase wait a little until the port becomes free. As a last resort try "killall php" before running. If port 8010 on your machine is always in use replace the default port in MockServer.php (DEFAULT_PORT const) AND in main.js (MOCK_SERVER_URL const)*
+
+[▲ Back to Contents](#contents)
+
+### 4) Wine Setup 3.1
+
+**⚑ Goal:** If you're clientele is not of the geeky bunch, they will surely appreciate a step based graphical setup wizard for your web application. Configuration is as simple as modifying a json file and the implementation of a couple of callback PHP classes. Themes will ensure easy adaptibility of the look and feel of your app. Should you need, custom templates are easily added.
+
+![Restless Parrot Preview](images/4-wine-setup-31.jpg)
+
+**⊕ Requirements:**
+- Only one index page, a json configuration file and a couple of callback classes
+- Templates and themes
+- Performant, OOP implementation
+
+**⊘ Restrictions (for the challenge):**
+- No frameworks used
+- No database used
+- Vanilla PHP & JavaScript, standards compliant HTML5 & CSS3
+
+**⧗ Man-hours:** Approximately 2 working days (or a couple of late-night coding sessions).
+
+**Total size:** 1.9 Mb (includes sample data + a 1.8 Mb high-res image)
+
+**⚒ Your challenge:**
+- Add a new theme
+- Add a custom template for something new and useful
+- Implement a sub-type of callback that can be polled to check whether the task is done. A progress bar displayed on the UI would be nice meanwhile.
+
+**ℹ**  *You can customise the setup in configuration.json , coding is required only for the callback PHP classes!*
+
+**ℹ**  *Try switching to the secondary built-in theme by setting options > theme to "wine31" in configuration.json*
+
+**ℹ**  *To create a new theme just simply copy resources/theme/wine31.css and tweak it. Then just set options > theme to the css filename in configuration.json*
+
+**ℹ**  *To create a new template put an html in resources/template folder. I suggest copying an existing one. The contents of this HTML snippet goes into the main window. To set up the template during load, put a script tag there. To query the step parameters from
+configuration.json reference APP.options , while you can advance to the next step with onclick="APP.nextStep();" Templates are absolutely free-form you can put whatever markup there. If you put an input or select there, the user input will be handed over to the PHP callback automagically.*
 
 [▲ Back to Contents](#contents)

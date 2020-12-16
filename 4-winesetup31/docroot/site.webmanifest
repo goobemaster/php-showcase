@@ -1,0 +1,12 @@
+{
+  "short_name": "Wine Setup 3.1",
+  "name": "PHP Showcase / Wine Setup 3.1",
+  "icons": [{
+    "src": "favicon.png",
+    "type": "image/png",
+    "sizes": "192x192"
+  }],
+  "start_url": "/index.php",
+  "background_color": "#fafafa",
+  "theme_color": "#fafafa"
+}

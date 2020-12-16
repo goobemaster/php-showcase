@@ -1,0 +1,31 @@
+<div class="container">
+    <div class="col">
+    </div>
+</div>
+<div class="buttons">
+    <button onclick="APP.nextStep();">Next</button>
+</div>
+<script>
+    var form = APP.main.querySelector('.container .col');
+    APP.options.fields.forEach(function (field) {
+        switch (field.type) {
+            case 'numeric':
+                form.innerHTML += `<label>${field.label}</label><input type="number" id="${field.id}" placeholder="${field.placeholder}">`;
+                break;
+            case 'boolean':
+                form.innerHTML += `<label>${field.label}</label><input type="radio" id="${field.true}" name="${field.id}" value="${field.true}"><label for="${field.true}">${field.true}</label>
+                <input type="radio" id="${field.false}" name="${field.id}" value="${field.false}"><label for="${field.false}">${field.false}</label><br>`;
+                break;
+            case 'enum':
+                select = `<label>${field.label}</label><select id="${field.id}">`;
+                field.items.forEach(function (option) {
+                    select += `<option value="${Object.keys(option)[0]}">${option[Object.keys(option)[0]]}</option>`;
+                });
+                form.innerHTML += select + '</select>';
+                break;
+            default: // Text
+                type = field.type === 'password' || field.type === 'text' ? field.type : 'text';
+                form.innerHTML += `<label>${field.label}</label><input type="${type}" id="${field.id}" placeholder="${field.placeholder}">`;
+        }
+    });
+</script>

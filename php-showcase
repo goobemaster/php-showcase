@@ -14,6 +14,7 @@ echo "Please choose a solution:\n";
 echo " \033[1;33m1)\033[0m Code Show Off\n";
 echo " \033[1;33m2)\033[0m Search The News\n";
 echo " \033[1;33m3)\033[0m Restless Parrot\n";
+echo " \033[1;33m4)\033[0m Wine Setup 3.1\n";
 
 $stdin = fopen('php://stdin', 'r');
 echo "\nYour \033[1;33mchoice\033[0m (or 'q' to exit): ";

@@ -1,0 +1,305 @@
+html * {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+html {
+    padding: 0;
+    margin: 0;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    overflow: hidden;
+}
+
+body {
+    font-family: 'Courier New', Courier, monospace;
+    background-color: rgb(40, 48, 68);
+    background: url('pexels-karol-d-841228.jpg') no-repeat center center fixed;
+    -moz-background-size: cover;
+    -webkit-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+a {
+    color: l orange;
+    text-decoration: none;
+    font-weight: bold;
+    text-shadow: 1px 1px 2px black;
+}
+
+a:hover, a:focus, a:active {
+    text-decoration: underline;
+}
+
+a:visited {
+    color: orange;
+}
+
+small {
+    display: inline;
+    padding: 0 0 0 0;
+    margin: 0 0 0 0;
+}
+
+footer, header {
+    color: #f7f7f7;
+    position: fixed;
+    height: auto;
+    opacity: 0.9;
+}
+
+footer {
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+header {
+    color: white;
+    left: 0;
+    right: 0;
+    top: 0;
+}
+
+header span {
+    color: orange;
+    font-size: larger;
+}
+
+header h1 {
+    margin-top: 8px;
+    margin-bottom: 8px;
+}
+
+header nav ul li:before {
+    content: "|";
+    margin-right: 4px;
+    margin-left: 4px;
+}
+
+header ul li,
+header ul li:before {
+    color: #d5d5d5;
+}
+
+header ul li.active,
+header ul li.active:before {
+    color: orange;
+}
+
+header ul li.active:before {
+    content: "❯";
+}
+
+header ul li.pass,
+header ul li.pass:before {
+    color: #f7f7f7;
+}
+
+header ul li.pass:before {
+    content: "✔";
+}
+
+footer:before, header:before {
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    background-blend-mode: darken;
+    content: "";
+    opacity: 0.5;
+}
+
+footer:before {
+    border-top: rgb(40, 48, 68) 2px solid;
+}
+
+header:before {
+    border-bottom: rgb(40, 48, 68) 2px solid;
+}
+
+footer *, header * {
+    position: relative;
+    text-shadow: 3px 3px 2px rgb(40, 48, 68);
+    display: inline-block;
+}
+
+footer p, header h1 {
+    padding-left: 16px;
+    padding-right: 16px;
+}
+
+/**
+ * To create a theme, just simply override one or more of the
+ * following css styles, in a *separate* stylesheet file.
+ *
+ * Put the file in this folder: docroot/resources/theme/xy.css
+ *
+ * To switch to a different theme modify the options > theme
+ * key in configuration.json
+ */
+
+main.window a,
+main.window a:visited,
+main.window a:focus {
+    color: rgb(40, 48, 68);
+    text-shadow: 0 0;
+}
+
+main.window {
+    -webkit-box-sizing: initial;
+    -moz-box-sizing: initial;
+    box-sizing: initial;
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    background-color: white;
+    border: 2px outset rgb(40, 48, 68);
+    font-family: monospace;
+}
+
+main.window #title {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 30px;
+    background-color: orange;
+    border-bottom: 2px inset rgb(40, 48, 68);
+}
+
+main.window #title h2 {
+    padding: 0;
+    margin: 0;
+    font-size: 20px;
+    padding: 0;
+    padding-left: 4px;
+    padding-top: 4px;
+}
+
+main.window #title h2:before {
+    content: "❯";
+    margin-right: 4px;
+}
+
+main.window #title button {
+    position: absolute;
+    top: 1px;
+    right: 1px;
+    width: 26px;
+    height: 26px;
+}
+
+main.window #contents {
+    position: absolute;
+    top: 30px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #f7f7f7;
+}
+
+main.window#alert #contents {
+    padding: 15px;
+}
+
+main.window p {
+    margin-top: 0;
+}
+
+main.window .buttons {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 50px;
+    background-color: #c4c4c4;
+    text-align: right;
+}
+
+main.window .buttons button {
+    margin: 10px;
+}
+
+.container {
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    flex-wrap: wrap;
+    height: 100%;
+}
+
+.container > .col {
+    padding: 10px;
+    padding-bottom: 60px;
+}
+
+.container > .col,
+.container > .col-25 {
+    flex-basis: 0;
+    flex-grow: 1;
+    max-width: 100%;
+    position: relative;
+    height: 100%;
+}
+
+.container > .col-25 {
+    max-width: 25%;
+}
+
+main.window .container > div {
+    padding-bottom: 50px;
+}
+
+img.fill {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    padding-bottom: 50px;
+}
+
+main.window input {
+    width: 100%;
+}
+
+main.window input,
+main.window select {
+    margin-bottom: 10px;
+}
+
+main.window input[type=radio] {
+    width: auto;
+    display: inline;
+    margin-right: 15px;
+}
+
+main.window label {
+    margin-right: 15px;
+}
+
+main.window select,
+main.window input[type=text],
+main.window input[type=number],
+main.window input[type=date],
+main.window input[type=password] {
+    margin-top: 4px;
+}

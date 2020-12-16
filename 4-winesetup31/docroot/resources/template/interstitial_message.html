@@ -1,0 +1,15 @@
+<div class="container">
+    <div class="col-25">
+        <img src="resources/bg-welcome.jpg" class="fill">
+    </div>
+    <div class="col">
+        <p></p>
+    </div>
+</div>
+<div class="buttons">
+    <button onclick="APP.nextStep();"></button>
+</div>
+<script>
+    APP.main.querySelector('p').innerHTML = APP.options.text;
+    APP.main.querySelector('.buttons button').textContent = APP.options.button; 
+</script>

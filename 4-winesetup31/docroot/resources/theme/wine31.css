@@ -1,0 +1,116 @@
+body {
+    background: #0000a8;
+}
+
+main.window a,
+main.window a:visited,
+main.window a:focus {
+    color: blue;
+    text-shadow: 0 0;
+}
+
+main.window {
+    box-shadow: 1px 1px 0 1pt black;
+    border-right: 1px solid #87888f;
+    border-bottom: 1px solid #87888f;
+    border-top: 2px ridge white;
+    border-left: 2px ridge white;
+}
+
+main.window,
+main.window .buttons,
+main.window #contents {
+    background-color: #c0c7c8;
+}
+
+main.window #contents {
+    padding: 15px;
+}
+
+main.window .buttons {
+    border-top: 2px ridge white;
+}
+
+main.window .buttons {
+    position: relative;
+    bottom: 35px;
+}
+
+main.window#alert .buttons {
+    position: absolute;
+    bottom: 0;
+}
+
+img.fill {
+    border: 1px solid black;
+    padding-bottom: 0;
+}
+
+.container {
+    padding-bottom: 50px;
+}
+
+main.window button {
+    background-color: #c0c7c8;
+    border: 2px outset #87888f;
+    border-top-color:white;
+    border-left-color:white;
+    border-radius: 2px;
+    height: 24px;
+    box-shadow: 0 0 0 1pt black;
+    color: black;
+    cursor: pointer;
+}
+
+main.window #title {
+    top: 5px;
+    left: 6px;
+    right: 6px;
+    background-color: #0000a8;
+    border-right: 1px solid white;
+    border-bottom: 1px solid white;
+    border-top: 2px ridge #87888f;
+    border-left: 2px ridge #87888f;
+    z-index: 2;
+}
+
+main.window #title h2 {
+    color: white;
+    text-align: center;
+    font-size: 18px;
+}
+
+main.window #title button {
+    position: absolute;
+    top: 1px;
+    right: 1px;
+    width: 26px;
+    height: 24px;
+}
+
+main.window input[type=radio] {
+    background-color: white;
+    border: 2px inset #c0c7c8;
+    border-top-color: black;
+}
+
+main.window select,
+main.window input[type=text],
+main.window input[type=number],
+main.window input[type=date],
+main.window input[type=password] {
+    background-color: white;
+    border: 1px groove #87888f;
+    border-right-color:#87888f;
+    border-right-style: solid;
+    border-bottom-color:#87888f;
+    border-bottom-style: solid;
+    border-top-color:black;
+    border-top-width: 2px;
+    border-left-color:black;
+    border-left-width: 2px;
+    border-radius: 2px;
+    height: 24px;
+    box-shadow: 1pt 1pt 0 0pt white;
+    color: black;
+}

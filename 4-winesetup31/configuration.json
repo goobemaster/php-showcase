@@ -1,0 +1,113 @@
+{
+    "app": {
+        "name": "Demo",
+        "version": "1.0.0-beta",
+        "homepage": "https://github.com/goobemaster/php-showcase",
+        "author": "Gabor Major",
+        "author_url": "https://twitter.com/goobemaster",
+        "license": "GPLv3",
+        "license_url": "https://www.gnu.org/licenses/gpl-3.0.rst",
+        "license_embed": true,
+        "support_url": "https://github.com/goobemaster/php-showcase/issues"
+    },
+    "options": {
+        "theme": "default",
+        "app_info_button": true
+    },
+    "steps": {
+        "0": {
+            "name": "Welcome",
+            "window": {
+                "width": 600, "height": 400, "title": "Welcome",
+                "template": "interstitial_message",
+                "options": {
+                    "text": "Welcome to the setup wizard which will finish the installation of \"Your Webapp\" on the server!<br><br>Whenever you're ready just click on the Let's Begin button below.",
+                    "button": "➟ Let's Begin"
+                }
+            }
+        },
+        "1": {
+            "name": "Server",
+            "window": {
+                "width": 600, "height": 400, "title": "Server",
+                "template": "basic_form",
+                "options": {
+                    "callback": "Server",
+                    "fields": [
+                        {"id": "baseUrl", "label": "Base URL", "type": "text", "placeholder": "http://localhost:8000"},
+                        {"id": "seo", "label": "SEO Friendly URL Rewrite", "type": "boolean", "true": "On", "false": "Off"},
+                        {"id": "log", "label": "Log Path", "type": "text", "placeholder": "/var/log/app"},
+                        {"id": "session", "label": "Session Expiration (seconds)", "type": "numeric", "placeholder": "1800"},
+                        {"id": "siteName", "label": "Site Name", "type": "text", "placeholder": ""},
+                        {"id": "language", "label": "Default Site Language", "type": "enum", "items": [
+                            {"en_US": "English"},
+                            {"hu_HU": "Magyar"}
+                        ]}
+                    ]
+                }
+            }            
+        },        
+        "2": {
+            "name": "Database",
+            "window": {
+                "width": 600, "height": 300, "title": "Database",
+                "template": "basic_form",
+                "options": {
+                    "callback": "Database",                    
+                    "fields": [
+                        {"id": "connUrl", "label": "Connection URL", "type": "text", "placeholder": "localhost:3306"},
+                        {"id": "connUser", "label": "User", "type": "text", "placeholder": ""},
+                        {"id": "connPass", "label": "Password", "type": "password", "placeholder": ""},
+                        {"id": "connEncrypt", "label": "Encryption", "type": "boolean", "true": "Yes", "false": "No"}
+                    ]
+                }
+            } 
+        },
+        "3": {
+            "name": "Administrator",
+            "window": {
+                "width": 600, "height": 300, "title": "Administrator",
+                "template": "basic_form",
+                "options": {
+                    "callback": "Administrator",
+                    "fields": [
+                        {"id": "adminUser", "label": "Username", "type": "text", "placeholder": "admin"},
+                        {"id": "adminPass", "label": "Password", "type": "password", "placeholder": ""},
+                        {"id": "adminEmail", "label": "Email", "type": "text", "placeholder": "someone@somewhere.com"},
+                        {"id": "adminNotify", "label": "Send System Notifications", "type": "boolean", "true": "Yes", "false": "No"}                      
+                    ]
+                }
+            } 
+        },
+        "4": {
+            "name": "Sample Content",
+            "window": {
+                "width": 600, "height": 220, "title": "Sample Content",
+                "template": "basic_form",
+                "options": {
+                    "callback": "SampleContent",
+                    "fields": [
+                        {"id": "contentPack", "label": "Sample Content Pack to Install", "type": "enum", "items": [
+                            {"none": "None"},
+                            {"startup": "Startup Homepage"},
+                            {"personal": "Personal Journal"},
+                            {"hosting": "Hosting Provider Content + Widgets"}                            
+                        ]}
+                    ]
+                }
+            } 
+        },
+        "5": {
+            "name": "Done",
+            "window": {
+                "width": 600, "height": 400, "title": "Done",
+                "template": "interstitial_message",
+                "options": {
+                    "callback": "DoneRedirect",
+                    "text": "We are done! See it wasn't that bad ;) Enjoy.",
+                    "button": "➟ Go the the site"
+                }
+            } 
+        }
+    }
+}
