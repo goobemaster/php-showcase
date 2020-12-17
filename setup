@@ -1,6 +1,6 @@
 #!/bin/bash
 
-php=`php -v`
+php=$(php -v 2>/dev/null)
 if [[ $php == *"PHP"* ]]; then
   echo "PHP is already installed. Good!"
   if [[ $php == *"PHP 5"* ]]; then
@@ -12,27 +12,27 @@ if [[ $php == *"PHP"* ]]; then
   exit 0
 fi
 
-echo "PHP needs to be installed. If you see any errors, you have to re-run the setup as super admin."
+echo "PHP needs to be installed. If you see any errors, you have to re-run the setup as super admin (sudo ./setup)."
 
-apt=`apt-cache show php`
+apt=$(apt-cache show php 2>/dev/null)
 if [[ $apt == *"Unable to locate package"* ]]; then
   apt-get install php7.2 php7.2-mbstring php7.2-bcmath php7.2-xml php7.2-sqlite3 php7.2-mysql php7.2-json php7.2-curl php7.2-common phpunit composer
   echo "PHP was installed by APT."
   exit 0
 fi
 
-pacman=`pacman`
+yum=$(yum 2>/dev/null)
+if [[ $yum == *"usage: yum"* ]]; then
+  yum -y install php
+  php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
+  php composer-setup.php --install-dir=/usr/local/bin --filename=composer
+  rm composer-setup.php
+  echo "PHP was installed by Yum."
+fi
+
+pacman=$(pacman 2>/dev/null)
 if [[ $pacman != *"not found"* ]]; then
   pacman -S php
   echo "PHP was installed by Pacman."
   exit 0
-fi
-
-yum=`yum`
-if [[ $yum != *"not found"* ]]; then
-  yum -y install epel-release
-  yum-config-manager --enable remi-php72
-  yum update
-  yum install php
-  echo "PHP was installed by Yum."
 fi
