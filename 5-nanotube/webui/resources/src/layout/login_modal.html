@@ -1,0 +1,53 @@
+<div class="modal" tabindex="-1" id="login_modal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title"><img src="resources/images/nanotube_logo_small.png" class="mr-2">Welcome to our society netizen!</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="login_form">
+                    <div class="form-group">
+                        <label for="login_email"><i class="fas fa-envelope mr-2"></i>Email address</label>
+                        <input type="email" class="form-control" id="login_email">
+                    </div>
+                    <div class="form-group">
+                        <label for="login_password"><i class="fas fa-key mr-2"></i>Password</label>
+                        <input type="password" class="form-control" id="login_password">
+                    </div>
+                </form>
+                <form id="registration_form">
+                    <div class="form-group">
+                        <label for="login_email"><i class="fas fa-envelope mr-2"></i>Email address</label>
+                        <input type="email" class="form-control" id="register_email" aria-describedby="register_email_help">
+                        <small id="register_email_help" class="form-text text-muted">You log in with your email address. Please never use shared accounts.</small>
+                    </div>
+                    <div class="form-group">
+                        <label for="login_email"><i class="fas fa-user mr-2"></i>Screen Name</label>
+                        <input type="text" class="form-control" id="register_name">
+                    </div>                    
+                    <div class="form-group">
+                        <label for="login_password"><i class="fas fa-key mr-2"></i>Password</label>
+                        <input type="password" class="form-control" id="register_password" aria-describedby="register_password_help">
+                        <small id="register_password_help" class="form-text text-muted">9 or more characters</small>
+                    </div>
+                    <small><i class="fas fa-lightbulb mr-2"></i>That's all we need right now! You can set up things later on.</small>
+                </form>                
+            </div>
+            <div class="modal-footer">
+                <div class="container-fluid m-0 p-0">
+                    <div class="row">
+                        <div class="col">
+                            <button type="button" class="btn btn-primary" id="register_button"><i class="fas fa-passport mr-2"></i><span>I'm new here</span></button>
+                        </div>
+                        <div class="col text-right">
+                            <button type="button" class="btn btn-success" id="login_button"><i class="fas fa-sign-in-alt mr-2"></i>Login</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,2 +1,6 @@
 2-search-the-news/data
 notes.txt
+**/vendor
+**/_out
+composer.lock
+*.phar

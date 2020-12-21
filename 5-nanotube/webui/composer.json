@@ -1,0 +1,19 @@
+{
+	"description": "PHP Showcase WebUI",
+	"name": "phpshowcase/webui",
+	"type": "project",
+	"homepage": "https://github.com/goobemaster/php-showcase",
+	"license": "GPL-3.0",
+    "bin": ["index.php"],
+	"support": {
+		"forum": "https://github.com/goobemaster/php-showcase/discussions",
+		"wiki": "https://github.com/goobemaster/php-showcase/wiki",
+		"source": "https://github.com/goobemaster/php-showcase"
+	},
+	"require": {
+		"php": ">=7.2",
+		"twbs/bootstrap": "v4.5.2",
+		"fortawesome/font-awesome": "5.15.1",
+		"components/jquery": "3.5.1"
+	}
+}

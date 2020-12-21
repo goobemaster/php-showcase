@@ -15,6 +15,7 @@ echo " \033[1;33m1)\033[0m Code Show Off\n";
 echo " \033[1;33m2)\033[0m Search The News\n";
 echo " \033[1;33m3)\033[0m Restless Parrot\n";
 echo " \033[1;33m4)\033[0m Wine Setup 3.1\n";
+echo " \033[1;33m5)\033[0m Nanotube\n";
 
 $stdin = fopen('php://stdin', 'r');
 echo "\nYour \033[1;33mchoice\033[0m (or 'q' to exit): ";
@@ -41,6 +42,20 @@ if (array_key_exists($index, BACKGROUND_PROCESS)) {
     $procFile = BACKGROUND_PROCESS[$index];
     exec(sprintf('php %s/../%s > /dev/null &', $folder, $procFile));
     echo "\n\033[0;36m{$procFile}\033[0m is running as a background process...\n";
+}
+
+if ($index == '5') {
+    chdir($folder);
+    system('./build.sh');
+    foreach (['auth' => '9010', 'connection' => '9020', 'content' => '9030'] as $service => $port) {
+        exec(sprintf("cd _out/{$service}; php -S localhost:{$port}"));
+        echo "\n\033[0;36m{$service} service\033[0m is running as a background process...\n";
+    }
+    chdir("{$folder}/_out/webui");
+    echo "\nOpen \033[0;36mhttp://localhost:8000/\033[0m in a browser. Press \033[0;31mCtrl+C\033[0m to stop the server.\n";
+    echo "\nBackground services must be stopped manually (e.g. 'killall php')";
+    $server = `php -S localhost:8000`;
+    exit(0);
 }
 
 chdir($folder);

@@ -1,0 +1,22 @@
+body {
+    background: #999;
+    background-image: radial-gradient(ellipse at top, #ffffff, transparent),
+    radial-gradient(ellipse at bottom, #00ccff, transparent);
+    background-attachment: fixed;
+}
+
+.border-top-nano {
+    border-top: 3px solid #484537;
+}
+
+.border-bottom-nano {
+    border-bottom: 3px solid #484537;
+}
+
+header .navbar-brand img {
+    max-height: 55px;
+}
+
+#login_modal .modal-header img {
+    max-height: 30px;
+}
