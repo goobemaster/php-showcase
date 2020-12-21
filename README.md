@@ -21,7 +21,9 @@ To try out a solution in your browser:
 
 ![Code Show Off Preview](images/setup-and-run.jpg)
 
-Note: 'php-showcase' and 'setup' only supports Linux for the time being.
+Note:
+- 'setup' only works in Linux, 'php-showcase' best works on Linux.
+- If you're on Windows, see setup-win.bat and php-showcase-win.bat (limited support).
 
 Pretty please: Open 'setup' and check what it actually does before you run it, because it may modify your system.
 
