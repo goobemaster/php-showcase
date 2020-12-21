@@ -2,47 +2,78 @@
 
 <?php
 
+const NIX = DIRECTORY_SEPARATOR === '/';
+$PHPBIN = NIX ? 'php' : '%TEMP%\..\PHP74\php';
 const BACKGROUND_PROCESS = [
     '3' => 'MockServer.php'
 ];
 const ARCHIVES = [
     '1' => ['/../content/bubble.c' => '/../content/sample.tar.gz']
 ];
+function out($txt) {
+	echo NIX ? $txt : preg_replace('/\e[[][A-Za-z0-9];?[0-9]*m?/', '', $txt);
+}
 
-echo "*** \033[46mhttps://github.com/goobemaster/php-showcase\033[0m ***\n\n";
-echo "Please choose a solution:\n";
-echo " \033[1;33m1)\033[0m Code Show Off\n";
-echo " \033[1;33m2)\033[0m Search The News\n";
-echo " \033[1;33m3)\033[0m Restless Parrot\n";
-echo " \033[1;33m4)\033[0m Wine Setup 3.1\n";
+out("*** \033[46mhttps://github.com/goobemaster/php-showcase\033[0m ***\n\n");
+out("Please choose a solution:\n");
+out(" \033[1;33m1)\033[0m Code Show Off\n");
+out(" \033[1;33m2)\033[0m Search The News\n");
+out(" \033[1;33m3)\033[0m Restless Parrot\n");
+out(" \033[1;33m4)\033[0m Wine Setup 3.1\n");
 
 $stdin = fopen('php://stdin', 'r');
-echo "\nYour \033[1;33mchoice\033[0m (or 'q' to exit): ";
+out("\nYour \033[1;33mchoice\033[0m (or 'q' to exit): ");
 $index = trim(fgets($stdin));
 if ($index === 'q') exit(0);
 
 $folder = glob($index . '-*', GLOB_ONLYDIR)[0] . '/docroot';
 if (!is_dir($folder)) {
-    echo "\n\033[0;31mCannot find solution with such index, or directory missing.\033[0m";
+    out("\n\033[0;31mCannot find solution with such index, or directory missing.\033[0m");
     exit(1);
 }
 
 if (array_key_exists($index, ARCHIVES)) {
-    foreach (ARCHIVES[$index] as $check => $archive) {
-        if (!is_file($folder . $check)) {
-            $archiveFile = $folder . $archive;
-            $archivePath = dirname($archiveFile);
-            exec("tar -xvzf {$archiveFile} -C {$archivePath}");
-        }
-    }
+	if (!NIX && $index == '1') {
+		out("\nPlease, copy your favourite source files to 1-code-show-off/content/\n");
+		out("or untar the archive in that folder manually.\n");
+	}
+	if (NIX) {
+		foreach (ARCHIVES[$index] as $check => $archive) {
+			if (!is_file($folder . $check)) {
+				$archiveFile = $folder . $archive;
+				$archivePath = dirname($archiveFile);
+				exec("tar -xvzf {$archiveFile} -C {$archivePath}");
+			}
+		}
+	}
 }
 
 if (array_key_exists($index, BACKGROUND_PROCESS)) {
+	if (!NIX) {
+		out("Sorry, this one cannot be run on Windows automatically yet.");
+		exit(1);
+	}
     $procFile = BACKGROUND_PROCESS[$index];
     exec(sprintf('php %s/../%s > /dev/null &', $folder, $procFile));
-    echo "\n\033[0;36m{$procFile}\033[0m is running as a background process...\n";
+    out("\n\033[0;36m{$procFile}\033[0m is running as a background process...\n");
+}
+
+if ($index == '5') {
+	out("Sorry, this one is not even done yet. ;)");
+	exit(1);
+    chdir($folder);
+    system('./build.sh');
+    foreach (['auth' => '9010', 'connection' => '9020', 'content' => '9030'] as $service => $port) {
+        exec(sprintf("cd _out/{$service}; php -S localhost:{$port}"));
+        out("\n\033[0;36m{$service} service\033[0m is running as a background process...\n");
+    }
+    chdir("{$folder}/_out/webui");
+    out("\nOpen \033[0;36mhttp://localhost:8000/\033[0m in a browser. Press \033[0;31mCtrl+C\033[0m to stop the server.\n");
+    out("\nBackground services must be stopped manually (e.g. 'killall php')");
+    $server = `php -S localhost:8000`;
+    exit(0);
 }
 
 chdir($folder);
-echo "\nOpen \033[0;36mhttp://localhost:8000/\033[0m in a browser. Press \033[0;31mCtrl+C\033[0m to stop the server.\n";
-$server = `php -S localhost:8000`;
+out("\nOpen \033[0;36mhttp://localhost:8000/\033[0m in a browser. Press \033[0;31mCtrl+C\033[0m to stop the server.\n");
+$server = shell_exec("{$PHPBIN} -S localhost:8000");
