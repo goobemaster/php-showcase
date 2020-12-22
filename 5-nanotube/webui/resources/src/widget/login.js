@@ -1,4 +1,6 @@
 SCRIPT.require('resources/src/util/validator.js');
+SCRIPT.require('resources/src/api/api_get_captcha_session.js');
+SCRIPT.require('resources/src/api/api_register.js');
 
 function login_widget() {
     this.init = false;
@@ -18,7 +20,7 @@ function login_widget() {
 
     this.show = function () {
         if (this.popup === undefined) {
-            LAYOUT.echo(APP.LAYOUT.LOGIN_MODAL, APP.BODY, LAYOUT.POSITION.BACK);
+            LAYOUT.echo(APP.LAYOUT.MODAL_LOGIN, APP.BODY, LAYOUT.POSITION.BACK);
         }
         this.popup = $('#login_modal');        
         this.login_email = $('#login_email');
@@ -39,12 +41,8 @@ function login_widget() {
             widget = APP.current_page.login;
             if (widget.form.login.is(':visible')) {
                 widget.show_register_form();
-                widget.secondary_button.find('span').text("Got an account?");
-                widget.primary_button.text('Sign me up!');
             } else {
                 widget.show_login_form();
-                widget.secondary_button.find('span').text("I'm new here");
-                widget.primary_button.text('Login');
             }
         });
 
@@ -63,6 +61,8 @@ function login_widget() {
         this.popup.modal('show');
         this.form.login.hide();
         this.form.registration.show();
+        this.secondary_button.find('span').text("Got an account?");
+        this.primary_button.text('Sign me up!');
     }
 
     this.show_login_form = function () {
@@ -70,48 +70,45 @@ function login_widget() {
         this.popup.modal('show');
         this.form.registration.hide();
         this.form.login.show();
+        this.secondary_button.find('span').text("I'm new here");
+        this.primary_button.text('Login');
     }
 
     this.register = function () {
-        formValidator = new validator(this.form.registration);
-        if (!formValidator.isValid()) return;
+        form = new validator(this.form.registration);
+        if (!form.isValid()) return;
 
-        request = $.post(`${APP.BASE_URL}/register`, JSON.stringify({
-            'email': this.register_email.val(),
-            'password': this.register_password.val(),
-            'username': this.register_username.val(),
-            'captchaId': SESSION.read(SESSION.KEY.CAPTCHA_SESSION),
-            'captcha': this.captcha.val()
-        }), function(data) {
-            login = APP.current_page.login;
-            login.show_login_form();
-            login.secondary_button.replaceWith('<small class="text-success"><strong><i class="fas fa-check-circle mr-2"></i>Please log in for the first time.</strong></small>');
-            login.update_captcha();
-        }, "json");
-        request.fail(function(jqXHR) {
-            // TODO: Sad modal
-        });
+        API.call(new api_register(
+            this.register_email.val(),
+            this.register_password.val(),
+            this.register_username.val(),
+            SESSION.read(SESSION.KEY.CAPTCHA_SESSION),
+            this.captcha.val(),
+            function () {
+                APP.current_page.login.show_login_form();
+                APP.current_page.login.secondary_button.replaceWith('<small class="text-success"><strong><i class="fas fa-check-circle mr-2"></i>Please log in for the first time.</strong></small>');
+                APP.current_page.login.update_captcha();
+            },
+            function () {
+                APP.alert(APP.ALERT.WARNING, 'Registration', 'Please double check that you correctly entered the captcha challenge.');
+            }
+        ));
     }
 
     this.login = function () {
-        formValidator = new validator(this.form.login);
-        if (!formValidator.isValid()) return;
+        form = new validator(this.form.login);
+        if (!form.isValid()) return;
 
-        // TODO
+        APP.alert(APP.ALERT.DANGER, 'Missing feature', 'Not implemented yet...');
     }
 
     this.update_captcha = function () {
-        $.ajax({
-            type: 'POST',
-            url: `${APP.BASE_URL}/getCaptchaSession`,
-            data: '{}',
-            contentType: 'application/json',
-            dataType: 'json',
-            headers: { 'Query': '1' },
-            success: function (data) {
-                APP.current_page.login.popup.find('#auth_captcha').css('background-image', `url(data:image/png;base64,${data.blob})`);
-                SESSION.write(SESSION.KEY.CAPTCHA_SESSION, data.uuid);
-            }
-        });
+        API.call(new api_get_captcha_session(function (data) {
+            APP.current_page.login.popup.find('#auth_captcha').css('background-image', `url(data:image/png;base64,${data.blob})`);
+            SESSION.write(SESSION.KEY.CAPTCHA_SESSION, data.uuid);
+            APP.current_page.login.captcha.val('');
+        }, function () {
+            // TODO: Sad modal (or maybe attempt it again, error page?)
+        }));
     }
 }

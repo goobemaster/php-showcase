@@ -1,3 +1,5 @@
+/** Common */
+
 body {
     background: #999;
     background-image: radial-gradient(ellipse at top, #ffffff, transparent),
@@ -13,9 +15,19 @@ body {
     border-bottom: 3px solid #484537;
 }
 
+/** Basic Layout */
+
 header .navbar-brand img {
     max-height: 55px;
 }
+
+/** Global APP Modals */
+
+#modal_alert .modal-body .col-2 i {
+    font-size: xx-large;
+}
+
+/** Login Widget */
 
 #login_modal .modal-header img {
     max-height: 30px;
