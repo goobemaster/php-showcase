@@ -72,7 +72,8 @@ const LAYOUT = new function () {
 
 const SESSION = new function () {
     this.KEY = {
-        USER_TOKEN: 'user_token'
+        USER_TOKEN: 'user_token',
+        CAPTCHA_SESSION: 'captcha_sess',
     }
 
     this.exists = function (key) {

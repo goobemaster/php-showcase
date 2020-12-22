@@ -20,3 +20,12 @@ header .navbar-brand img {
 #login_modal .modal-header img {
     max-height: 30px;
 }
+
+#auth_captcha_user,
+#login_modal #auth_captcha {
+    width: 240px;
+}
+
+#login_modal #auth_captcha {
+    height: 50px;
+}

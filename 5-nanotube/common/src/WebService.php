@@ -71,10 +71,10 @@ abstract class WebService {
             $ifaceQueryName = $ifaceQuery->getName();
             $route = '/' . $ifaceName . '/' . $ifaceQueryName;
 
-            $this->api->get($route,
+            $this->api->post($route,
                 function (Request $request, Response $response) use ($servicePropName, $ifaceQueryName, $service) {
                     $requestBodyJson = json_decode($request->getBody());
-                    if ($requestBodyJson === null) {
+                    if ($requestBodyJson === null || !$request->hasHeader('Query')) {
                         $response = $response->withStatus(400);
                     } else {
                         $result = json_encode($service->{$servicePropName}->{$ifaceQueryName}($requestBodyJson));
@@ -84,7 +84,7 @@ abstract class WebService {
                             $response->getBody()->write($result);
                         }
                     }
-                    return $response;
+                    return $response->withHeader('Content-Type', 'application/json');
                 }
             );
         }
@@ -113,10 +113,10 @@ abstract class WebService {
                     }
                 );
             } else if ($isQuery) {
-                $this->api->get($route,
+                $this->api->post($route,
                     function (Request $request, Response $response) use ($methodName, $service) {
                         $requestBodyJson = json_decode($request->getBody());
-                        if ($requestBodyJson === null) {
+                        if ($requestBodyJson === null || !$request->hasHeader('Query')) {
                             $response = $response->withStatus(400);
                         } else {
                             $result = json_encode($service->{$methodName}($requestBodyJson));
@@ -126,7 +126,7 @@ abstract class WebService {
                                 $response->getBody()->write($result);
                             }
                         }
-                        return $response;
+                        return $response->withHeader('Content-Type', 'application/json');
                     }
                 );
             }

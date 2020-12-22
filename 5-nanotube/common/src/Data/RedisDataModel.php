@@ -21,4 +21,8 @@ abstract class RedisDataModel {
     public function exists(): bool {
         return RedisConnection::get()->exists($this->getKey()) === 1;
     }
+
+    public function setExpire($seconds): bool {
+        return RedisConnection::get()->expire($this->getKey(), (int) $seconds);
+    }
 }

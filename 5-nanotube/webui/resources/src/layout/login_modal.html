@@ -11,7 +11,7 @@
                 <form id="login_form">
                     <div class="form-group">
                         <label for="login_email"><i class="fas fa-envelope mr-2"></i>Email address</label>
-                        <input type="email" class="form-control" id="login_email">
+                        <input type="text" class="form-control" id="login_email" data-validation="^.+@.+\..{2,}$">
                     </div>
                     <div class="form-group">
                         <label for="login_password"><i class="fas fa-key mr-2"></i>Password</label>
@@ -21,20 +21,26 @@
                 <form id="registration_form">
                     <div class="form-group">
                         <label for="login_email"><i class="fas fa-envelope mr-2"></i>Email address</label>
-                        <input type="email" class="form-control" id="register_email" aria-describedby="register_email_help">
+                        <input type="text" class="form-control" id="register_email" aria-describedby="register_email_help" data-validation="^.+@.+\..{2,}$">
                         <small id="register_email_help" class="form-text text-muted">You log in with your email address. Please never use shared accounts.</small>
                     </div>
                     <div class="form-group">
                         <label for="login_email"><i class="fas fa-user mr-2"></i>Screen Name</label>
-                        <input type="text" class="form-control" id="register_name">
-                    </div>                    
+                        <input type="text" class="form-control" id="register_name" data-validation="^[^\s]{3,50}$">
+                    </div>
                     <div class="form-group">
                         <label for="login_password"><i class="fas fa-key mr-2"></i>Password</label>
-                        <input type="password" class="form-control" id="register_password" aria-describedby="register_password_help">
+                        <input type="password" class="form-control" id="register_password" aria-describedby="register_password_help" data-validation="^.{9,}$">
                         <small id="register_password_help" class="form-text text-muted">9 or more characters</small>
                     </div>
                     <small><i class="fas fa-lightbulb mr-2"></i>That's all we need right now! You can set up things later on.</small>
-                </form>                
+                </form>
+                <form>
+                    <div class="form-group">
+                        <div class="w-100 text-center mb-1"><img class="border" id="auth_captcha"></div>
+                        <input type="text" class="form-control mx-auto" id="auth_captcha_user" placeholder="Complete the challenge...">  
+                    </div>
+                </form>
             </div>
             <div class="modal-footer">
                 <div class="container-fluid m-0 p-0">

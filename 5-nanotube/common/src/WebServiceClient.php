@@ -72,13 +72,15 @@ final class WebServiceClient {
     public function serviceQuery($keyword, $params): object {
         $jsonBody = json_encode($params);
         if ($jsonBody === null) return (object) [];
-        // Ide is kéne catch valszeg de meg kéne nézni a WebService mit csinál...
-        $response = $this->client->request(self::GET, "{$this->baseUrl}/{$keyword}", ['body' => $jsonBody]);
-        if ($response->getStatusCode() === 200) {
+        try {
+            $response = $this->client->request(self::POST, "{$this->baseUrl}/{$keyword}",
+                ['body' => $jsonBody, 'headers' => ['Query' => '1']]
+            );
             $responseBodyJson = json_decode($response->getBody());
             return $responseBodyJson === null ? (object) [] : $responseBodyJson;
+        } catch (\GuzzleHttp\Exception\ClientException $e) {
+            return (object) [];
         }
-        return (object) [];
     }
 
     /**
@@ -90,11 +92,14 @@ final class WebServiceClient {
     public function interfaceQuery($interface, $keyword, $params): object {
         $jsonBody = json_encode($params);
         if ($jsonBody === null) return (object) [];
-        $response = $this->client->request(self::GET, "{$this->baseUrl}/{$interface}/{$keyword}", ['body' => $jsonBody]);
-        if ($response->getStatusCode() === 200) {
+        try {
+            $response = $this->client->request(self::POST, "{$this->baseUrl}/{$interface}/{$keyword}",
+                ['body' => $jsonBody, 'headers' => ['Query' => '1']]
+            );
             $responseBodyJson = json_decode($response->getBody());
             return $responseBodyJson === null ? (object) [] : $responseBodyJson;
+        } catch (\GuzzleHttp\Exception\ClientException $e) {
+            return (object) [];
         }
-        return (object) [];
     }
 }

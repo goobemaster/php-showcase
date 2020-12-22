@@ -1,3 +1,5 @@
+SCRIPT.require('resources/src/util/validator.js');
+
 function login_widget() {
     this.init = false;
     this.popup;
@@ -12,6 +14,7 @@ function login_widget() {
     }
     this.primary_button;
     this.secondary_button;
+    this.captcha;
 
     this.show = function () {
         if (this.popup === undefined) {
@@ -28,6 +31,7 @@ function login_widget() {
         this.form.registration.hide();
         this.primary_button = $('#login_button');
         this.secondary_button = $('#register_button');
+        this.captcha = $('#auth_captcha_user');
         this.show_login_form();
         if (this.init) return;
 
@@ -49,6 +53,8 @@ function login_widget() {
             widget.form.login.is(':visible') ? widget.login() : widget.register();
         });
 
+        this.update_captcha();
+
         this.init = true;
     }
 
@@ -67,20 +73,45 @@ function login_widget() {
     }
 
     this.register = function () {
+        formValidator = new validator(this.form.registration);
+        if (!formValidator.isValid()) return;
+
         request = $.post(`${APP.BASE_URL}/register`, JSON.stringify({
             'email': this.register_email.val(),
             'password': this.register_password.val(),
-            'username': this.register_username.val()
+            'username': this.register_username.val(),
+            'captchaId': SESSION.read(SESSION.KEY.CAPTCHA_SESSION),
+            'captcha': this.captcha.val()
         }), function(data) {
-            APP.current_page.login.show_login_form();
-            APP.current_page.login.secondary_button.replaceWith('<small class="text-success"><strong><i class="fas fa-check-circle mr-2"></i>Please log in for the first time.</strong></small>');
+            login = APP.current_page.login;
+            login.show_login_form();
+            login.secondary_button.replaceWith('<small class="text-success"><strong><i class="fas fa-check-circle mr-2"></i>Please log in for the first time.</strong></small>');
+            login.update_captcha();
         }, "json");
         request.fail(function(jqXHR) {
-            // Sad modal
+            // TODO: Sad modal
         });
     }
 
     this.login = function () {
+        formValidator = new validator(this.form.login);
+        if (!formValidator.isValid()) return;
+
         // TODO
+    }
+
+    this.update_captcha = function () {
+        $.ajax({
+            type: 'POST',
+            url: `${APP.BASE_URL}/getCaptchaSession`,
+            data: '{}',
+            contentType: 'application/json',
+            dataType: 'json',
+            headers: { 'Query': '1' },
+            success: function (data) {
+                APP.current_page.login.popup.find('#auth_captcha').css('background-image', `url(data:image/png;base64,${data.blob})`);
+                SESSION.write(SESSION.KEY.CAPTCHA_SESSION, data.uuid);
+            }
+        });
     }
 }
