@@ -5,28 +5,16 @@ composer install
 php -d phar.readonly=off vendor/clue/phar-composer/bin/phar-composer build .
 cd ..
 
-cd auth
-composer install
-cd ..
-rm auth/common.phar
-cp common/common.phar auth/common.phar
+declare -a services=("auth" "connection" "content" "webui")
 
-cd connection
-composer install
-cd ..
-rm connection/common.phar
-cp common/common.phar connection/common.phar
-
-cd content
-composer install
-cd ..
-rm content/common.phar
-cp common/common.phar content/common.phar
-
-cd webui
-composer install
-cd ..
-rm webui/common.phar
-cp common/common.phar webui/common.phar
+for i in "${services[@]}"
+do
+    cd $i
+    composer install
+    cd ..
+    rm $i/common.phar
+    rm $i/routes.ser
+    cp common/common.phar $i/common.phar
+done
 
 rm common/common.phar

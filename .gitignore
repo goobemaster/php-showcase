@@ -2,5 +2,8 @@
 notes.txt
 **/vendor
 **/_out
+**/logs
 composer.lock
 *.phar
+.log
+*.ser
