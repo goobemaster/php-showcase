@@ -1,6 +1,10 @@
 # php-showcase
 KISS solutions to blatantly easy tasks with the right ratio of server and client side code.
 
+If you like this project, or found it useful:
+
+[!["Buy Me A Coffee"](https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png)](https://www.buymeacoffee.com/kodenkel)
+
 ## Contents
 
 - [How to run a solution](#how-to-run-a-solution)
